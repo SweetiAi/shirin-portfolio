@@ -9,21 +9,6 @@
 <style>
     body {
         max-width: 1200px;
-
-        .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
-}
-
-        .hero-left {
-    flex: 2;
-}
-
-.hero-right {
-    flex: 1;
-}
         margin: auto;
         padding: 60px 30px;
         font-family: Arial, sans-serif;
@@ -33,34 +18,66 @@
     }
 
     h1 {
-        font-size: 56px;
-        margin-bottom: 10px;
+        font-size: 84px;
+        line-height: 0.95;
+        margin-bottom: 24px;
     }
 
     h2 {
         margin-top: 100px;
+        margin-bottom: 24px;
     }
 
     a {
         text-decoration: none;
         color: black;
+        font-weight: 600;
     }
 
     .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 80px;
         margin-top: 80px;
         margin-bottom: 120px;
     }
 
+    .hero-left {
+        flex: 2;
+    }
+
+    .hero-right {
+        flex: 1;
+    }
+
     .subtitle {
-        font-size: 24px;
-        max-width: 700px;
+        font-size: 28px;
+        max-width: 650px;
+        color: #555;
+    }
+
+    .research-line {
+        margin-top: 80px;
+        margin-bottom: 80px;
+        font-size: 14px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
     }
 
     .project-card {
-        border: 1px solid #eaeaea;
-        padding: 24px;
-        border-radius: 16px;
+        border: 1px solid #ececec;
+        padding: 40px;
+        border-radius: 24px;
         margin-top: 24px;
+    }
+
+    .project-tag {
+        color: #777;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 </style>
 ```
@@ -98,10 +115,19 @@
 
 </div>
 
+<div class="research-line">
+    Cognition · Emotion · Learning · Systems
+</div>
+
 <h2>Selected Projects</h2>
 
 <div class="project-card">
+
     <h3>Lithosia</h3>
+
+    <p class="project-tag">
+        Mental Wellbeing · EdTech · Emotional AI
+    </p>
 
     <p>
         AI-powered emotional wellbeing and learning platform
@@ -111,6 +137,7 @@
     <a href="lithosia.html">
         View Project →
     </a>
+
 </div>
 
 <h2>Research Interests</h2>
@@ -123,7 +150,8 @@
 <h2>Writing & Notes</h2>
 
 <p>
-    Articles, research notes, and reflections coming soon.
+    Articles, research notes, essays, and explorations of
+    cognition, emotion, learning, and human-centered technology.
 </p>
 ```
 
