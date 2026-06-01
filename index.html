@@ -1,159 +1,188 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
     <title>Shirin Ah</title>
 
-```
-<style>
-    body {
-        max-width: 1200px;
-        margin: auto;
-        padding: 60px 30px;
-        font-family: Arial, sans-serif;
-        line-height: 1.8;
-        color: #222;
-        background: white;
-    }
+    <style>
+        body {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 30px;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            color: #222;
+            background: white;
+        }
 
-    h1 {
-        font-size: 84px;
-        line-height: 0.95;
-        margin-bottom: 24px;
-    }
+        h1 {
+            font-size: 84px;
+            line-height: 0.95;
+            margin-bottom: 24px;
+        }
 
-    h2 {
-        margin-top: 100px;
-        margin-bottom: 24px;
-    }
+        h2 {
+            margin-top: 100px;
+            margin-bottom: 24px;
+        }
 
-    a {
-        text-decoration: none;
-        color: black;
-        font-weight: 600;
-    }
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+        }
 
-    .hero {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 80px;
-        margin-top: 80px;
-        margin-bottom: 120px;
-    }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 80px;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
 
-    .hero-left {
-        flex: 2;
-    }
+        .hero-left {
+            flex: 2;
+        }
 
-    .hero-right {
-        flex: 1;
-    }
+        .hero-right {
+            flex: 1;
+        }
 
-    .subtitle {
-        font-size: 28px;
-        max-width: 650px;
-        color: #555;
-    }
+        .subtitle {
+            font-size: 28px;
+            max-width: 650px;
+            color: #555;
+        }
 
-    .research-line {
-        margin-top: 80px;
-        margin-bottom: 80px;
-        font-size: 14px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: #888;
-    }
+        .hero-image {
+            width: 100%;
+            border-radius: 20px;
+            margin-top: 60px;
+        }
 
-    .project-card {
-        border: 1px solid #ececec;
-        padding: 40px;
-        border-radius: 24px;
-        margin-top: 24px;
-    }
+        .research-line {
+            margin-top: 80px;
+            margin-bottom: 80px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888;
+        }
 
-    .project-tag {
-        color: #777;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-</style>
-```
+        .project-card {
+            border: 1px solid #ececec;
+            border-radius: 24px;
+            margin-top: 24px;
+            overflow: hidden;
+        }
 
+        .project-image {
+            width: 100%;
+            display: block;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-tag {
+            color: #777;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<div class="hero">
+    <!-- HERO -->
 
-    <div class="hero-left">
+    <div class="hero">
 
-        <h1>Shirin Ah</h1>
+        <div class="hero-left">
 
-        <p class="subtitle">
-            Product Designer & Systems Thinker exploring cognition,
-            emotion, and human-centered technology.
-        </p>
+            <h1>Shirin Ah</h1>
+
+            <p class="subtitle">
+                Product Designer & Systems Thinker exploring cognition,
+                emotion, and human-centered technology.
+            </p>
+
+        </div>
+
+        <div class="hero-right">
+
+            <strong>Focus Areas</strong>
+
+            <p>
+                Emotional AI<br>
+                Cognitive Science<br>
+                Learning Systems<br>
+                Active Inference
+            </p>
+
+        </div>
 
     </div>
 
-    <div class="hero-right">
+    <!-- HERO IMAGE -->
 
-        <strong>Focus Areas</strong>
+    <img class="hero-image" src="assets/images/hero-main.png" alt="Hero Image">
 
-        <p>
-            Emotional AI<br>
-            Cognitive Science<br>
-            Learning Systems<br>
-            Active Inference
-        </p>
+    <!-- RESEARCH LINE -->
+
+    <div class="research-line">
+        Cognition · Emotion · Learning · Systems
+    </div>
+
+    <!-- PROJECTS -->
+
+    <h2>Selected Projects</h2>
+
+    <div class="project-card">
+
+        <img class="project-image" src="assets/images/lithosia-thumbnail.png" alt="Lithosia">
+
+        <div class="project-content">
+
+            <h3>Lithosia</h3>
+
+            <p class="project-tag">
+                Mental Wellbeing · EdTech · Emotional AI
+            </p>
+
+            <p>
+                AI-powered emotional wellbeing and learning platform
+                designed for Gen Z learners.
+            </p>
+
+            <a href="lithosia.html">
+                View Project →
+            </a>
+
+        </div>
 
     </div>
 
-</div>
+    <!-- RESEARCH -->
 
-<div class="research-line">
-    Cognition · Emotion · Learning · Systems
-</div>
-
-<h2>Selected Projects</h2>
-
-<div class="project-card">
-
-    <h3>Lithosia</h3>
-
-    <p class="project-tag">
-        Mental Wellbeing · EdTech · Emotional AI
-    </p>
+    <h2>Research Interests</h2>
 
     <p>
-        AI-powered emotional wellbeing and learning platform
-        designed for Gen Z learners.
+        Cognitive Science · Emotional AI · Active Inference ·
+        Learning Systems · Embodied Interaction
     </p>
 
-    <a href="lithosia.html">
-        View Project →
-    </a>
+    <!-- WRITING -->
 
-</div>
+    <h2>Writing & Notes</h2>
 
-<h2>Research Interests</h2>
-
-<p>
-    Cognitive Science · Emotional AI · Active Inference ·
-    Learning Systems · Embodied Interaction
-</p>
-
-<h2>Writing & Notes</h2>
-
-<p>
-    Articles, research notes, essays, and explorations of
-    cognition, emotion, learning, and human-centered technology.
-</p>
-```
+    <p>
+        Articles, research notes, essays, and explorations of
+        cognition, emotion, learning, and human-centered technology.
+    </p>
 
 </body>
 
