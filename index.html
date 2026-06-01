@@ -6,22 +6,26 @@
 
     <style>
         body {
-            max-width: 1100px;
-            margin: auto;
-            padding: 40px 24px;
+            margin: 0;
             font-family: Arial, sans-serif;
             line-height: 1.8;
             color: #222;
             background: white;
         }
 
-        /* HERO IMAGE */
+        /* FULL WIDTH HERO */
         .hero-image {
-            width: 110%;
+            width: 100%;
             height: 520px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 40px;
+            display: block;
+        }
+
+        /* MAIN CONTENT WRAPPER */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 24px;
         }
 
         /* TYPOGRAPHY */
@@ -63,8 +67,9 @@
 
         .project-image {
             width: 100%;
-            height: 230px;
+            height: 220px;
             object-fit: cover;
+            display: block;
         }
 
         .project-content {
@@ -83,50 +88,49 @@
             color: black;
             font-weight: 600;
         }
-
-        .section {
-            margin-top: 60px;
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- HERO IMAGE -->
-    <img class="hero-image" src="assets/images/heromain .png">
+    <!-- HERO (FULL WIDTH) -->
+    <img class="hero-image" src="assets/images/hero-main.png" alt="Hero">
 
-    <!-- NAME -->
-    <h1>Shirin Ah</h1>
+    <!-- CONTENT -->
+    <div class="container">
 
-    <p class="subtitle">
-        Product Designer & Systems Thinker exploring cognition,
-        emotion, and human-centered technology.
-    </p>
+        <h1>Shirin Ah</h1>
 
-    <div class="focus">
-        Emotional AI · Cognitive Science · Learning Systems · Active Inference
-    </div>
+        <p class="subtitle">
+            Product Designer & Systems Thinker exploring cognition,
+            emotion, and human-centered technology.
+        </p>
 
-    <!-- PROJECTS -->
-    <h2>Selected Projects</h2>
+        <div class="focus">
+            Emotional AI · Cognitive Science · Learning Systems · Active Inference
+        </div>
 
-    <div class="project-card">
+        <h2>Selected Projects</h2>
 
-        <img class="project-image" src="assets/images/lithosia-thumbnail.png">
+        <div class="project-card">
 
-        <div class="project-content">
+            <img class="project-image" src="assets/images/lithosia-thumbnail.png" alt="Lithosia">
 
-            <h3>Lithosia</h3>
+            <div class="project-content">
 
-            <p class="tag">
-                Mental Wellbeing · EdTech · Emotional AI
-            </p>
+                <h3>Lithosia</h3>
 
-            <p>
-                AI-powered emotional wellbeing and learning platform for Gen Z learners.
-            </p>
+                <p class="tag">
+                    Mental Wellbeing · EdTech · Emotional AI
+                </p>
 
-            <a href="lithosia.html">View Project →</a>
+                <p>
+                    AI-powered emotional wellbeing and learning platform for Gen Z learners.
+                </p>
+
+                <a href="lithosia.html">View Project →</a>
+
+            </div>
 
         </div>
 
