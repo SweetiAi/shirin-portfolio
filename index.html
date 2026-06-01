@@ -8,7 +8,22 @@
 ```
 <style>
     body {
-        max-width: 1000px;
+        max-width: 1200px;
+
+        .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+        .hero-left {
+    flex: 2;
+}
+
+.hero-right {
+    flex: 1;
+}
         margin: auto;
         padding: 60px 30px;
         font-family: Arial, sans-serif;
@@ -57,12 +72,29 @@
 ```
 <div class="hero">
 
-    <h1>Shirin Ah</h1>
+    <div class="hero-left">
 
-    <p class="subtitle">
-        Product Designer & Systems Thinker exploring cognition,
-        emotion, and human-centered technology.
-    </p>
+        <h1>Shirin Ah</h1>
+
+        <p class="subtitle">
+            Product Designer & Systems Thinker exploring cognition,
+            emotion, and human-centered technology.
+        </p>
+
+    </div>
+
+    <div class="hero-right">
+
+        <strong>Focus Areas</strong>
+
+        <p>
+            Emotional AI<br>
+            Cognitive Science<br>
+            Learning Systems<br>
+            Active Inference
+        </p>
+
+    </div>
 
 </div>
 
