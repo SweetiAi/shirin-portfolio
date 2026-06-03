@@ -56,15 +56,22 @@
         }
 
         /* PROJECT CARD */
-        .project-card {
-            width: 100%;
-            max-width: 520px;
-            border: 1px solid #eaeaea;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
+       .project-card {
+    width: 100%;
+    max-width: 520px;
+    border: 1px solid #eaeaea;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 20px;
 
+    transition: all 0.25s ease;
+}
+.project-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+}
         .project-image {
             width: 100%;
             height: 310px;
@@ -111,31 +118,36 @@
         </div>
 
         <h2>Selected Projects</h2>
+<a class="project-link" href="lithosia.html">
 
-        <div class="project-card">
+    <div class="project-card">
 
-            <img class="project-image" src="assets/images/lithosia-thumbnail.png" alt="Lithosia">
+        <img class="project-image" src="assets/images/lithosia-thumbnail.png" alt="Lithosia">
 
-            <div class="project-content">
+        <div class="project-content">
 
-                <h3>Lithosia</h3>
+            <h3>Lithosia</h3>
 
-                <p class="tag">
-                    Mental Wellbeing · EdTech · Emotional AI
-                </p>
+            <p class="tag">
+                Mental Wellbeing · EdTech · Emotional AI
+            </p>
 
-                <p>
-                    AI-powered emotional wellbeing and learning platform for Gen Z learners.
-                </p>
+            <p>
+                AI-powered emotional wellbeing and learning platform for Gen Z learners.
+            </p>
 
-                <a href="lithosia.html">View Project →</a>
-
-            </div>
+            <span>View Project →</span>
 
         </div>
 
     </div>
 
+</a>
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
 </body>
 
 </html>
