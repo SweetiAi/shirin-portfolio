@@ -68,6 +68,15 @@
 
     transition: all 0.25s ease;
 }
+        .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.project-card {
+    max-width: none;
+}
 .project-card:hover {
     transform: translateY(-4px);
 
@@ -124,12 +133,19 @@
             Emotional AI · Cognitive Science · Learning Systems · Active Inference
         </div>
 
-        <h2>Selected Projects</h2>
+       <h2>Selected Projects</h2>
+
+<div class="projects-grid">
+
+```
+<!-- Lithosia -->
+
 <a class="project-link" href="lithosia.html">
 
     <div class="project-card">
 
-        <img class="project-image" src="assets/images/lithosia-thumbnail.png" alt="Lithosia">
+        <img class="project-image"
+             src="assets/images/lithosia-thumbnail.png">
 
         <div class="project-content">
 
@@ -140,7 +156,8 @@
             </p>
 
             <p>
-                AI-powered emotional wellbeing and learning platform for Gen Z learners.
+                AI-powered emotional wellbeing and learning
+                platform for Gen Z learners.
             </p>
 
             <span>View Project →</span>
@@ -150,6 +167,41 @@
     </div>
 
 </a>
+
+<!-- CafeCube -->
+
+<a class="project-link" href="cafecube.html">
+
+    <div class="project-card">
+
+        <img class="project-image"
+             src="assets/images/cafecube-thumbnail.png">
+
+        <div class="project-content">
+
+            <h3>CafeCube</h3>
+
+            <p class="tag">
+                Hospitality · Conversational AI · Food Experience
+            </p>
+
+            <p>
+                An emotionally-aware café ordering experience
+                powered by an AI concierge that personalizes
+                food recommendations through conversation.
+            </p>
+
+            <span>View Project →</span>
+
+        </div>
+
+    </div>
+
+</a>
+```
+
+</div>
+
 .project-link {
     text-decoration: none;
     color: inherit;
