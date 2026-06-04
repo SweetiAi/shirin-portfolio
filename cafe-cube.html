@@ -94,69 +94,43 @@
         }
 
         /* ==========================================
-           3. HERO SECTION (Layout & 3D Devices)
+           3. HERO SECTION (Updated to fit Frame 1547.jpg)
            ========================================== */
         .hero-section {
-            display: grid;
-            grid-template-columns: 1.1fr 1.1fr;
-            gap: 60px;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 241, 252, 0.4) 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            background: #ffffff;
             border: 1px solid var(--border-light);
             border-radius: 40px;
-            padding: 80px;
+            padding: 40px;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
         }
 
-        /* Sparkle graphic matching original background */
-        .hero-sparkle {
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
-        .brand-badge {
-            display: inline-flex;
+        .hero-image-wrapper {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            background: var(--primary-accent-light);
-            color: var(--primary-accent);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin-bottom: 24px;
         }
 
-        .main-title {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #1e1b19 0%, #4b3e6d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-showcase-img {
+            width: 100%;
+            height: auto;
+            max-height: 650px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .sub-title {
-            font-size: 2.2rem;
-            font-weight: 400;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 48px;
-            max-width: 500px;
+        .hero-image-wrapper:hover .hero-showcase-img {
+            transform: scale(1.015);
         }
 
         /* Hero Meta Block */
@@ -166,6 +140,10 @@
             gap: 32px;
             border-top: 1px solid var(--border-light);
             padding-top: 32px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
         }
 
         .meta-item {
@@ -188,322 +166,7 @@
         }
 
         /* ==========================================
-           4. 3D INTERACTIVE DEVICE PRESENTATION
-           ========================================== */
-        .hero-device-wrapper {
-            position: relative;
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1500px;
-        }
-
-        .device-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transform: rotateY(-18deg) rotateX(12deg) rotateZ(4deg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Phone Mockups Base Design */
-        .phone-mockup {
-            position: absolute;
-            width: 250px;
-            height: 520px;
-            background: #ffffff;
-            border-radius: 36px;
-            box-shadow: 0 30px 60px rgba(45, 40, 55, 0.18), 
-                        inset 0 0 0 10px #1e1b19;
-            overflow: hidden;
-            border: 8px solid #1e1b19;
-            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        /* Device Positioning & Depth layering */
-        .phone-mockup.left-screen {
-            transform: translate3d(-170px, 10px, -80px) scale(0.9);
-            z-index: 1;
-            opacity: 0.85;
-        }
-
-        .phone-mockup.center-screen {
-            transform: translate3d(0, -10px, 80px) scale(1.03);
-            z-index: 3;
-            box-shadow: 0 45px 90px rgba(45, 40, 55, 0.25), 
-                        inset 0 0 0 10px #1e1b19;
-        }
-
-        .phone-mockup.right-screen {
-            transform: translate3d(170px, 30px, -40px) scale(0.92);
-            z-index: 2;
-            opacity: 0.9;
-        }
-
-        /* Device Hover Effects */
-        .hero-device-wrapper:hover .left-screen {
-            transform: translate3d(-190px, 0, -110px) scale(0.88);
-        }
-
-        .hero-device-wrapper:hover .center-screen {
-            transform: translate3d(0, -25px, 120px) scale(1.05);
-        }
-
-        .hero-device-wrapper:hover .right-screen {
-            transform: translate3d(190px, 20px, -60px) scale(0.9);
-        }
-
-        /* Device Content Styles (Actual UI render) */
-        .phone-header {
-            height: 44px;
-            background: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .phone-body {
-            height: calc(100% - 44px);
-            background: linear-gradient(180deg, #faf6f0 0%, #f4ebfa 100%);
-            padding: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            position: relative;
-        }
-
-        /* Screen 1: Home Screen */
-        .home-logo {
-            font-weight: 800;
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-        .talk-cube-banner {
-            background: linear-gradient(135deg, #fce6d4 0%, #e6d8fa 100%);
-            border-radius: 20px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            position: relative;
-        }
-        .talk-cube-title {
-            font-size: 1rem;
-            font-weight: 800;
-        }
-        .talk-cube-sub {
-            font-size: 0.65rem;
-            color: var(--text-secondary);
-        }
-        .wave-container {
-            display: flex;
-            gap: 3px;
-            align-items: center;
-            height: 20px;
-            margin-top: 8px;
-        }
-        .wave-bar {
-            width: 3px;
-            background: var(--primary-accent);
-            border-radius: 10px;
-            animation: pulseWave 1.2s infinite ease-in-out alternate;
-        }
-        .wave-bar:nth-child(2) { height: 18px; animation-delay: 0.2s; }
-        .wave-bar:nth-child(3) { height: 12px; animation-delay: 0.4s; }
-        .wave-bar:nth-child(4) { height: 22px; animation-delay: 0.1s; }
-        .wave-bar:nth-child(5) { height: 14px; animation-delay: 0.5s; }
-
-        .banner-cube-character {
-            position: absolute;
-            bottom: -5px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid #efebf5;
-        }
-        .cube-face {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            align-items: center;
-        }
-        .cube-eyes {
-            display: flex;
-            gap: 10px;
-        }
-        .cube-eye {
-            width: 4px;
-            height: 4px;
-            background: #000;
-            border-radius: 50%;
-        }
-        .cube-smile {
-            width: 12px;
-            height: 6px;
-            border-bottom: 2px solid #000;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .browse-menu-btn {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 700;
-            font-size: 0.85rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        /* Screen 2: Interactive Chat Screen (Middle Screen) */
-        .chat-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 10px;
-        }
-        .chef-avatar {
-            width: 32px;
-            height: 32px;
-            background: #e6d8fa;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        .chat-bubble-agent {
-            background: #fff0e5;
-            color: var(--text-primary);
-            font-size: 0.72rem;
-            padding: 10px 14px;
-            border-radius: 16px 16px 16px 4px;
-            line-height: 1.4;
-            max-width: 85%;
-        }
-        .chat-bubble-user {
-            background: #eedfff;
-            color: var(--text-primary);
-            font-size: 0.72rem;
-            padding: 10px 14px;
-            border-radius: 16px 16px 4px 16px;
-            line-width: 1.4;
-            max-width: 85%;
-            align-self: flex-end;
-        }
-        .chat-input-bar {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            background: #ffffff;
-            border-radius: 24px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            box-shadow: var(--shadow-sm);
-        }
-        .chat-input-placeholder {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        /* Screen 3: Cart / Menu Screen */
-        .product-item-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 12px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-        }
-        .product-img-placeholder {
-            width: 50px;
-            height: 50px;
-            background: #faf6f0;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
-        .product-details {
-            flex-grow: 1;
-        }
-        .product-title-tiny {
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-        .product-price-tiny {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--primary-accent);
-        }
-        .quantity-controller {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #f7f5f8;
-            padding: 4px 8px;
-            border-radius: 100px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-        .cart-summary-box {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 16px;
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: var(--shadow-sm);
-        }
-        .summary-line {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-        }
-        .summary-line.total-line {
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            border-top: 1px solid var(--border-light);
-            padding-top: 8px;
-            margin-top: 4px;
-        }
-
-        /* Animation keys */
-        @keyframes pulseWave {
-            0% { transform: scaleY(0.4); }
-            100% { transform: scaleY(1); }
-        }
-
-        /* ==========================================
-           5. SECTION 01: THE PROBLEM
+           4. SECTION 01: THE PROBLEM
            ========================================== */
         .section-row {
             display: grid;
@@ -595,7 +258,7 @@
         }
 
         /* ==========================================
-           6. SECTION 02: DESIGN GOAL & BANNER
+           5. SECTION 02: DESIGN GOAL & BANNER
            ========================================== */
         .highlight-banner {
             background: linear-gradient(135deg, var(--secondary-accent-light) 0%, #fff7f2 100%);
@@ -678,7 +341,7 @@
         }
 
         /* ==========================================
-           7. PROCESS & KEY FEATURES ROW
+           6. PROCESS & KEY FEATURES ROW
            ========================================== */
         .two-column-row {
             display: grid;
@@ -795,7 +458,7 @@
         }
 
         /* ==========================================
-           8. OUTCOME & WHAT'S NEXT SECTION
+           7. OUTCOME & WHAT'S NEXT SECTION
            ========================================== */
         .outcome-layout {
             display: grid;
@@ -944,16 +607,12 @@
         }
 
         /* ==========================================
-           9. RESPONSIVE MEDIA QUERIES
+           8. RESPONSIVE MEDIA QUERIES
            ========================================== */
         @media (max-width: 1200px) {
             .hero-section {
-                grid-template-columns: 1fr;
-                padding: 60px 40px;
-                gap: 80px;
-            }
-            .hero-device-wrapper {
-                height: 500px;
+                padding: 40px 30px;
+                gap: 40px;
             }
             .layout-split {
                 grid-template-columns: 1fr;
@@ -963,9 +622,6 @@
                 grid-template-columns: 1fr;
                 gap: 60px;
             }
-            .banner-emotions {
-                max-width: 100%;
-            }
         }
 
         @media (max-width: 768px) {
@@ -974,37 +630,11 @@
                 padding: 0 16px;
             }
             .hero-section {
-                padding: 40px 24px;
-            }
-            .main-title {
-                font-size: 3rem;
-            }
-            .sub-title {
-                font-size: 1.6rem;
+                padding: 30px 20px;
             }
             .meta-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
-            }
-            .hero-device-wrapper {
-                height: 440px;
-            }
-            .phone-mockup {
-                width: 180px;
-                height: 380px;
-                border-radius: 24px;
-            }
-            .phone-mockup.left-screen {
-                transform: translate3d(-100px, 10px, -60px) scale(0.9);
-            }
-            .phone-mockup.right-screen {
-                transform: translate3d(100px, 20px, -40px) scale(0.92);
-            }
-            .banner-emotions {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .peeking-cube {
-                display: none;
             }
             .metrics-grid {
                 grid-template-columns: 1fr;
@@ -1022,157 +652,24 @@
 
     <div class="case-study-container">
         
-        <!-- HERO SECTION with Fully Scalable CSS 3D Floating Devices -->
+        <!-- HERO SECTION: Styled to display Frame 1547.jpg elegantly as a full-width showcase -->
         <header class="hero-section">
-            <svg class="hero-sparkle" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path d="M24 0C24 13.2548 13.2548 24 0 24C13.2548 24 24 34.7452 24 48C24 34.7452 34.7452 24 48 24C34.7452 24 24 13.2548 24 0Z" fill="#7d69af"/>
-            </svg>
-            
-            <div class="hero-content">
-                <div class="brand-badge">☕ CUBE CAFÉ</div>
-                <h1 class="main-title">Cube Café</h1>
-                <h2 class="sub-title">AI Café Experience</h2>
-                <p class="hero-description">
-                    An AI-powered café ordering experience that understands your mood and preferences, and recommends the perfect food and drinks just for you.
-                </p>
-                
-                <div class="meta-grid">
-                    <div class="meta-item">
-                        <span class="meta-label">ROLE</span>
-                        <span class="meta-value">Product Designer</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">TOOLS</span>
-                        <span class="meta-value">Figma, FigJam</span>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">DURATION</span>
-                        <span class="meta-value">2 Weeks</span>
-                    </div>
-                </div>
+            <div class="hero-image-wrapper">
+                <img src="Frame 1547.jpg" alt="Cube Café — AI Café Experience Showcase" class="hero-showcase-img" onerror="this.onerror=null; this.src='https://placehold.co/1240x720/ebdff5/7d69af?text=Cube+Caf%C3%A9+Showcase';" />
             </div>
             
-            <!-- Beautiful Perspective Layer containing 3D Simulated App Screen UI -->
-            <div class="hero-device-wrapper">
-                <div class="device-container">
-                    
-                    <!-- Left Device Screen: Home State -->
-                    <div class="phone-mockup left-screen">
-                        <div class="phone-header">
-                            <span>9:41</span>
-                            <span>📶🔋</span>
-                        </div>
-                        <div class="phone-body">
-                            <div class="home-logo">Cube cafe</div>
-                            <div class="talk-cube-banner">
-                                <span class="talk-cube-title">Talk to Cube</span>
-                                <span class="talk-cube-sub">Your coffee concierge is ready to help you order.</span>
-                                <div class="wave-container">
-                                    <div class="wave-bar" style="height: 10px;"></div>
-                                    <div class="wave-bar" style="height: 18px;"></div>
-                                    <div class="wave-bar" style="height: 12px;"></div>
-                                    <div class="wave-bar" style="height: 22px;"></div>
-                                    <div class="wave-bar" style="height: 14px;"></div>
-                                </div>
-                                <div class="banner-cube-character">
-                                    <div class="cube-face">
-                                        <div class="cube-eyes">
-                                            <div class="cube-eye"></div>
-                                            <div class="cube-eye"></div>
-                                        </div>
-                                        <div class="cube-smile"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="browse-menu-btn">
-                                <span>Browse Menu</span>
-                                <span>➔</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Center Device Screen: Active Chat Conversation -->
-                    <div class="phone-mockup center-screen">
-                        <div class="phone-header">
-                            <span>9:41</span>
-                            <span>📶🔋</span>
-                        </div>
-                        <div class="phone-body">
-                            <div class="chat-header">
-                                <div class="chef-avatar">👨‍🍳</div>
-                                <div>
-                                    <div style="font-size: 0.78rem; font-weight: 800;">Cube Chef</div>
-                                    <div style="font-size: 0.6rem; color: #a19791;">Online Concierge</div>
-                                </div>
-                            </div>
-                            
-                            <div class="chat-bubble-agent">
-                                Hi there! 👋 I'm Cube Chef. I can help find something you'll really enjoy. Any dietary restrictions?
-                            </div>
-                            
-                            <div class="chat-bubble-user">
-                                I'm lactose intolerant, and try to avoid too much sugar.
-                            </div>
-                            
-                            <div class="chat-bubble-agent">
-                                Perfect! Let's craft the perfect breakfast bundle for you.
-                            </div>
-                            
-                            <div class="chat-input-bar">
-                                <span class="chat-input-placeholder">Type your message...</span>
-                                <span style="font-size: 0.9rem;">🎙️ ➔</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Device Screen: Cart Summary -->
-                    <div class="phone-mockup right-screen">
-                        <div class="phone-header">
-                            <span>9:41</span>
-                            <span>📶🔋</span>
-                        </div>
-                        <div class="phone-body">
-                            <div class="home-logo">Cart</div>
-                            
-                            <div class="product-item-card">
-                                <div class="product-img-placeholder">☕</div>
-                                <div class="product-details">
-                                    <div class="product-title-tiny">Oat Milk Latte</div>
-                                    <div class="product-price-tiny">$5.50</div>
-                                </div>
-                                <div class="quantity-controller">
-                                    <span>-</span><span>1</span><span>+</span>
-                                </div>
-                            </div>
-                            
-                            <div class="product-item-card">
-                                <div class="product-img-placeholder">🥐</div>
-                                <div class="product-details">
-                                    <div class="product-title-tiny">Almond Croissant</div>
-                                    <div class="product-price-tiny">$4.75</div>
-                                </div>
-                                <div class="quantity-controller">
-                                    <span>-</span><span>2</span><span>+</span>
-                                </div>
-                            </div>
-                            
-                            <div class="cart-summary-box">
-                                <div class="summary-line">
-                                    <span>Subtotal</span>
-                                    <span>$15.00</span>
-                                </div>
-                                <div class="summary-line">
-                                    <span>Tax</span>
-                                    <span>$1.25</span>
-                                </div>
-                                <div class="summary-line total-line">
-                                    <span>Total</span>
-                                    <span>$16.25</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">ROLE</span>
+                    <span class="meta-value">Product Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">TOOLS</span>
+                    <span class="meta-value">Figma, FigJam, Midjourney</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">DURATION</span>
+                    <span class="meta-value">2 Weeks</span>
                 </div>
             </div>
         </header>
