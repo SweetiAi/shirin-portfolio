@@ -196,6 +196,96 @@
       .closing-card{padding:42px 28px;border-radius:36px}.closing-mark{display:none}
       footer{flex-direction:column}
     }
+  
+    /* Warm, playful portfolio layer — original product screens stay untouched */
+    :root{
+      --ink:#2d1715; --muted:#785b55; --cream:#fff4e8; --paper:#fffdf8;
+      --purple:#8f4e96; --purple-soft:#f2ddf3; --peach:#ff986e; --peach-soft:#ffe1cf;
+      --green:#9fd4bd; --green-soft:#e2f5e9; --yellow:#ffd36c;
+      --line:rgba(85,45,35,.13); --shadow:0 28px 75px rgba(113,61,37,.13);
+    }
+    body{
+      background:
+        radial-gradient(ellipse at 4% 8%,rgba(255,177,131,.36),transparent 27%),
+        radial-gradient(ellipse at 91% 14%,rgba(248,194,222,.32),transparent 27%),
+        radial-gradient(ellipse at 68% 53%,rgba(255,220,126,.20),transparent 24%),
+        radial-gradient(ellipse at 13% 82%,rgba(163,222,194,.24),transparent 26%),
+        var(--cream);
+    }
+    .nav{background:rgba(255,251,244,.88);border:1px solid rgba(255,255,255,.94);box-shadow:0 12px 36px rgba(99,51,35,.10)}
+    .cube-mark{background:linear-gradient(135deg,#ffb38c 0%,#f37975 55%,#b75ca1 100%);box-shadow:inset -7px -8px 13px rgba(86,35,65,.17),0 5px 12px rgba(191,99,83,.18);transform:rotate(-7deg)}
+    .cube-mark:before{content:"";position:absolute;inset:8px 9px 9px 8px;border:2px solid rgba(255,255,255,.82);border-radius:3px;transform:rotate(45deg) scale(.73)}
+    h1{font-family:"DM Sans",sans-serif;font-weight:800;letter-spacing:-.075em}
+    h1 em{background:linear-gradient(100deg,#f07869 8%,#b75c9d 62%,#efae4e);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .eyebrow{color:#b9594e}
+    .eyebrow:before{height:3px;border-radius:5px}
+    .hero{padding-top:64px}
+    .hero-stage{border-radius:42px;padding:12px;background:linear-gradient(135deg,rgba(255,255,255,.93),rgba(255,237,217,.84));box-shadow:0 24px 65px rgba(116,66,39,.15);transform:rotate(-.35deg)}
+    .hero-stage img{border-radius:32px}
+    .floating-note{border-radius:12px 18px 13px 16px;background:#fff0a9;border:1px solid rgba(226,177,72,.25);color:#583527;box-shadow:0 12px 25px rgba(121,78,28,.14);font-size:13px;transform:rotate(-4deg)}
+    .note-b{background:#f8def0;transform:rotate(4deg)}
+    .meta{background:rgba(255,253,248,.83);border-color:white;border-radius:22px;transition:transform .25s,box-shadow .25s}
+    .meta:hover{transform:translateY(-5px) rotate(-1deg);box-shadow:0 15px 32px rgba(113,61,37,.12)}
+    section{padding:78px 0}
+    .section-no{font-family:"DM Sans",sans-serif;font-weight:900;font-size:52px;letter-spacing:-.08em;color:#e68a67}
+    .section-head h2{font-family:"DM Sans",sans-serif;font-weight:850;letter-spacing:-.06em}
+    .section-intro{color:#795c53}
+    .problem-card{min-height:218px;border-radius:28px 38px 30px 34px;box-shadow:0 12px 30px rgba(113,61,37,.07);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+    .problem-card:nth-child(2){background:#ffe4df}
+    .problem-card:nth-child(3){background:#e3f4e8}
+    .problem-card:nth-child(4){background:#fff0bd}
+    .problem-card:hover{transform:translateY(-8px) rotate(-.7deg);box-shadow:0 22px 42px rgba(113,61,37,.13)}
+    .problem-card h3,.flow-step h3{font-family:"DM Sans",sans-serif;font-weight:800;letter-spacing:-.045em}
+    .problem-card .orb{border-color:rgba(255,255,255,.56)}
+    .engine{background:linear-gradient(125deg,#ffd7c4 0%,#f9d9ef 53%,#fff0b8 100%);color:#321d1a;border-radius:42px;padding:54px;box-shadow:0 24px 60px rgba(155,87,69,.12)}
+    .engine:before{background:rgba(255,255,255,.36)}
+    .engine:after{background:rgba(255,175,112,.25)}
+    .engine h3{font-family:"DM Sans",sans-serif;font-weight:850;letter-spacing:-.065em}
+    .engine p{color:#644844}
+    .signal{background:rgba(255,255,255,.61);border:1px solid rgba(255,255,255,.83);border-radius:22px;transition:transform .25s,background .25s;backdrop-filter:blur(7px)}
+    .signal:hover{transform:translateY(-7px) rotate(1deg);background:rgba(255,255,255,.88)}
+    .signal span{color:#795c53}
+    .signal:nth-child(1) i{background:#e97976}.signal:nth-child(2) i{background:#6bb68c}.signal:nth-child(3) i{background:#ed9d51}.signal:nth-child(4) i{background:#b9619d}.signal:nth-child(5) i{background:#e6b438}
+    .flow-step{border-radius:25px 32px 27px 34px;transition:transform .28s,box-shadow .28s}
+    .flow-step:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 25px 48px rgba(113,61,37,.14)}
+    .flow-step:nth-child(2):hover,.flow-step:nth-child(3):hover{transform:translateY(-10px) rotate(1deg)}
+    .flow-step .n{color:#e58c71;font-weight:800}
+    .branch-card{background:#f5e1f2}
+    .branch-card:last-child{background:#ffe3cf}
+    .visual-board,.interaction-media{border-radius:32px;background:#fffaf2}
+    .visual-board img,.interaction-media img{border-radius:24px}
+    .mini-list div{background:rgba(255,244,232,.83);border-color:white;border-radius:14px}
+    .video-card{background:linear-gradient(145deg,#3a201e,#794135);padding:14px}
+    .demo-note{background:linear-gradient(145deg,#f4d8f1,#fff0bd);border-radius:34px}
+    .demo-note h3,.interaction-copy h3{font-family:"DM Sans",sans-serif;font-weight:850;letter-spacing:-.055em}
+    .closing-card{background:linear-gradient(120deg,#ffd6c1 0%,#f4d9ed 54%,#dcf1dc 100%)}
+    .closing-card h2{font-family:"DM Sans",sans-serif;font-weight:850;letter-spacing:-.065em}
+    .wish-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .wish-note{min-height:122px;padding:20px 22px;background:#fff0b5;border-radius:12px 24px 14px 22px;box-shadow:0 10px 25px rgba(113,61,37,.09);transform:rotate(-1deg);transition:transform .25s}
+    .wish-note:nth-child(2){background:#f7def0;transform:rotate(1.2deg)}
+    .wish-note:nth-child(3){background:#ddf2e4;transform:rotate(-.5deg)}
+    .wish-note:hover{transform:translateY(-6px) rotate(0)}
+    .wish-note .face{font-size:25px;display:block;margin-bottom:10px}
+    .wish-note p{font-weight:700;font-size:14px;line-height:1.5;margin:0;color:#553a35}
+    .wish-label{font-size:12px;color:#9d6252;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin:34px 0 0}
+    .mascot-callout{display:flex;align-items:center;gap:20px;max-width:500px;margin:32px auto 0;padding:14px 24px 14px 16px;background:rgba(255,255,255,.61);border:1px solid rgba(255,255,255,.86);border-radius:24px;position:relative;z-index:2}
+    .cube-friend{width:66px;height:58px;flex:0 0 66px;position:relative;border-radius:15px 15px 18px 18px;background:linear-gradient(145deg,#ffd08d,#ff9675);box-shadow:inset -8px -8px 0 rgba(190,83,75,.13),0 8px 18px rgba(111,56,46,.15);transform:rotate(-5deg);animation:cube-bob 3s ease-in-out infinite}
+    .cube-friend:before{content:"";position:absolute;left:17px;top:20px;width:7px;height:8px;border-radius:50%;background:#4b2928;box-shadow:24px 0 #4b2928}
+    .cube-friend:after{content:"";position:absolute;left:27px;top:32px;width:12px;height:7px;border-bottom:2px solid #4b2928;border-radius:50%}
+    .cube-friend i{position:absolute;width:9px;height:6px;border-radius:50%;background:#f17678;left:10px;top:32px;box-shadow:34px 0 #f17678}
+    .mascot-callout strong{font-size:15px}
+    .mascot-callout span{display:block;font-size:12px;color:#795c53;line-height:1.5;margin-top:3px}
+    .sparkle{display:inline-block;color:#df8461;animation:sparkle-turn 4s linear infinite}
+    @keyframes cube-bob{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+    @keyframes sparkle-turn{50%{transform:rotate(20deg) scale(1.18)}}
+    @media(max-width:680px){
+      .wish-notes{grid-template-columns:1fr}
+      .engine{padding:34px 22px}
+      .mascot-callout{align-items:flex-start}
+      .hero-stage{transform:none}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
   </style>
 </head>
 <body>
@@ -245,6 +335,12 @@
         <article class="problem-card"><span class="kicker">03 · Trust</span><h3>Recommendations need a reason.</h3><p>A useful AI assistant should explain why something fits and let the person adjust or ignore the suggestion instantly.</p><i class="orb"></i></article>
         <article class="problem-card"><span class="kicker">04 · Control</span><h3>The menu must still be the menu.</h3><p>Cube adds an optional intelligent layer. Users who already know what they want can browse and order directly without talking to the assistant.</p><i class="orb"></i></article>
       </div>
+      <p class="wish-label">Little things people wish their café menu understood <span class="sparkle">✦</span></p>
+      <div class="wish-notes">
+        <article class="wish-note"><span class="face">🙋🏻‍♀️</span><p>“I wish the menu remembered what I can actually eat.”</p></article>
+        <article class="wish-note"><span class="face">🙋🏽‍♂️</span><p>“I want something that fits my taste today—not the same top pick every time.”</p></article>
+        <article class="wish-note"><span class="face">🙋🏼‍♀️</span><p>“Some days I know what I want. Other days, help me find it.”</p></article>
+      </div>
     </section>
 
     <section id="system" class="shell">
@@ -256,6 +352,10 @@
         <div class="engine-top">
           <h3>Five signals.<br>One useful suggestion.</h3>
           <p>The assistant can start from what the user already knows — “something cold,” “no dairy,” “not too sweet” — and combine it with preferences or mood when relevant. The goal is not to diagnose emotion. The goal is to make choosing easier and more personal.</p>
+        </div>
+        <div class="mascot-callout">
+          <div class="cube-friend" aria-hidden="true"><i></i></div>
+          <div><strong>Hi, I’m Cube! <span class="sparkle">✦</span></strong><span>I help you find a good fit. You’re always in charge of the order.</span></div>
         </div>
         <div class="signals">
           <div class="signal"><i></i><strong>Taste</strong><span>Sweet, bitter, fruity, creamy, light, rich…</span></div>
