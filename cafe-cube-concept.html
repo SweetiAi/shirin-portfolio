@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cube Café — Context-Aware Café Experience</title>
+  <meta name="description" content="Cube Café is an AI-powered café experience that personalizes menu discovery using taste, dietary needs, allergies, mood and moment-to-moment context." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#241f2d;
+      --muted:#756e7d;
+      --cream:#f8f2ea;
+      --paper:#fffdf9;
+      --purple:#8a6bb8;
+      --purple-soft:#e8dcf6;
+      --peach:#f2b68d;
+      --peach-soft:#fbe7d8;
+      --green:#b9d8ca;
+      --green-soft:#e5f2ec;
+      --yellow:#ead892;
+      --line:rgba(53,43,63,.12);
+      --shadow:0 28px 70px rgba(61,42,76,.10);
+      --radius-xl:48px;
+      --radius-lg:32px;
+      --radius-md:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%,rgba(242,182,141,.28),transparent 28%),
+        radial-gradient(circle at 95% 26%,rgba(138,107,184,.20),transparent 29%),
+        radial-gradient(circle at 15% 74%,rgba(185,216,202,.24),transparent 28%),
+        var(--cream);
+      font-family:"DM Sans",sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img,video{max-width:100%;display:block}
+
+    .shell{width:min(1320px,calc(100% - 36px));margin:0 auto}
+
+    .nav{
+      width:min(1320px,calc(100% - 36px));
+      margin:22px auto 0;
+      padding:14px 18px 14px 22px;
+      background:rgba(255,253,249,.76);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow:0 12px 42px rgba(60,45,75,.07);
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position:sticky;
+      top:14px;
+      z-index:20;
+    }
+
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.02em}
+    .cube-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--purple),#b092d5);position:relative;box-shadow:inset -7px -8px 13px rgba(66,42,93,.16)}
+    .cube-mark:after{content:"";position:absolute;width:11px;height:11px;background:var(--peach);border-radius:4px;right:-3px;top:-3px;transform:rotate(10deg)}
+    .nav-links{display:flex;gap:26px;align-items:center;color:var(--muted);font-size:14px;font-weight:600}
+    .nav-links a:hover{color:var(--purple)}
+    .back-pill{padding:10px 16px;border-radius:999px;background:var(--ink);color:white;font-size:13px}
+
+    .hero{padding:74px 0 80px}
+    .hero-copy{display:grid;grid-template-columns:1.02fr .78fr;gap:80px;align-items:end;margin-bottom:44px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--purple)}
+    .eyebrow:before{content:"";width:34px;height:1px;background:currentColor}
+    h1,h2,h3{font-family:"Fraunces",serif;margin:0;letter-spacing:-.035em}
+    h1{font-size:clamp(58px,7.4vw,112px);line-height:.9;max-width:860px;font-weight:600}
+    h1 em{font-style:normal;color:var(--purple)}
+    .hero-side{padding-bottom:8px}
+    .hero-side p{font-size:19px;line-height:1.72;color:var(--muted);margin:0 0 24px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.52);font-size:12px;font-weight:700}
+
+    .hero-stage{position:relative;border-radius:var(--radius-xl);padding:18px;background:rgba(255,253,249,.75);border:1px solid rgba(255,255,255,.88);box-shadow:var(--shadow);overflow:hidden}
+    .hero-stage:before,.hero-stage:after{content:"";position:absolute;border-radius:999px;filter:blur(.1px);pointer-events:none}
+    .hero-stage:before{width:170px;height:170px;background:var(--peach-soft);left:-62px;top:-70px}
+    .hero-stage:after{width:130px;height:130px;background:var(--green-soft);right:-42px;bottom:-52px}
+    .hero-stage img{width:100%;border-radius:34px;position:relative;z-index:1}
+    .floating-note{position:absolute;z-index:3;padding:12px 16px;background:rgba(255,253,249,.92);border:1px solid rgba(255,255,255,.9);box-shadow:0 15px 34px rgba(51,38,62,.11);border-radius:18px;font-size:12px;font-weight:700}
+    .note-a{left:32px;bottom:34px;transform:rotate(-2deg)}
+    .note-b{right:34px;top:32px;transform:rotate(2deg)}
+
+    .meta-strip{display:grid;grid-template-columns:1.2fr 1fr .8fr .8fr;gap:14px;margin-top:18px}
+    .meta{padding:20px 22px;background:rgba(255,253,249,.66);border:1px solid rgba(255,255,255,.7);border-radius:20px}
+    .meta span{display:block;font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:7px}
+    .meta strong{font-size:14px}
+
+    section{padding:88px 0}
+    .section-head{display:grid;grid-template-columns:170px 1fr;gap:28px;align-items:start;margin-bottom:42px}
+    .section-no{font-family:"Fraunces",serif;font-size:74px;line-height:.8;color:rgba(138,107,184,.26)}
+    .section-head h2{font-size:clamp(42px,5vw,72px);line-height:1.01;max-width:850px}
+    .section-intro{font-size:18px;line-height:1.75;color:var(--muted);max-width:760px;margin:18px 0 0}
+
+    .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .problem-card{min-height:240px;padding:32px;border-radius:30px;background:rgba(255,253,249,.82);border:1px solid rgba(255,255,255,.88);box-shadow:0 18px 50px rgba(61,42,76,.06);position:relative;overflow:hidden}
+    .problem-card:nth-child(2){background:var(--purple-soft)}
+    .problem-card:nth-child(3){background:var(--green-soft)}
+    .problem-card:nth-child(4){background:var(--peach-soft)}
+    .problem-card .kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:var(--muted)}
+    .problem-card h3{font-size:31px;margin:40px 0 12px}
+    .problem-card p{margin:0;color:var(--muted);line-height:1.62;max-width:520px}
+    .problem-card .orb{position:absolute;width:88px;height:88px;border-radius:50%;right:-20px;top:-22px;border:18px solid rgba(255,255,255,.45)}
+
+    .engine{background:var(--ink);color:white;border-radius:48px;padding:62px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .engine:before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:rgba(138,107,184,.28);right:-170px;top:-210px}
+    .engine:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(242,182,141,.16);left:-80px;bottom:-130px}
+    .engine-top{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;position:relative;z-index:2}
+    .engine h3{font-size:50px;line-height:1.03}
+    .engine p{font-size:17px;line-height:1.72;color:#c9c2ce;margin:0}
+    .signals{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px;position:relative;z-index:2}
+    .signal{border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:20px 16px;background:rgba(255,255,255,.045);min-height:136px}
+    .signal i{width:12px;height:12px;border-radius:50%;display:block;margin-bottom:28px}
+    .signal:nth-child(1) i{background:#b89adb}.signal:nth-child(2) i{background:#b9d8ca}.signal:nth-child(3) i{background:#f2b68d}.signal:nth-child(4) i{background:#e6a8bd}.signal:nth-child(5) i{background:#ead892}
+    .signal strong{display:block;font-size:14px;margin-bottom:6px}
+    .signal span{font-size:12px;line-height:1.5;color:#a99faa}
+
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .flow-step{padding:24px;border-radius:26px;background:var(--paper);border:1px solid rgba(255,255,255,.9);box-shadow:0 15px 45px rgba(61,42,76,.06);position:relative;min-height:215px}
+    .flow-step:nth-child(2){transform:translateY(24px)}
+    .flow-step:nth-child(3){transform:translateY(-12px)}
+    .flow-step .n{font-family:"Fraunces",serif;font-size:43px;color:rgba(138,107,184,.35)}
+    .flow-step h3{font-size:23px;margin:22px 0 9px}
+    .flow-step p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+    .branch{margin-top:56px;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:18px}
+    .branch-card{padding:26px 28px;border-radius:26px;background:var(--purple-soft)}
+    .branch-card:last-child{background:var(--peach-soft)}
+    .branch-card span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+    .branch-card h3{font-size:28px;margin:10px 0 6px}
+    .branch-card p{font-size:14px;color:var(--muted);margin:0;line-height:1.55}
+    .or{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:11px;font-weight:700;color:var(--muted);box-shadow:0 10px 26px rgba(56,38,68,.08)}
+
+    .visual-board{padding:20px;border-radius:42px;background:var(--paper);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.85)}
+    .visual-board img{width:100%;border-radius:28px}
+    .board-caption{display:flex;justify-content:space-between;gap:30px;padding:24px 10px 5px}
+    .board-caption strong{font-size:15px}
+    .board-caption span{font-size:13px;color:var(--muted);max-width:610px;text-align:right;line-height:1.55}
+
+    .interaction-layout{display:grid;grid-template-columns:.38fr 1fr;gap:34px;align-items:start}
+    .interaction-copy{position:sticky;top:110px;padding-top:6px}
+    .interaction-copy h3{font-size:44px;line-height:1.06;margin-bottom:18px}
+    .interaction-copy p{font-size:16px;line-height:1.72;color:var(--muted)}
+    .mini-list{display:grid;gap:9px;margin-top:24px}
+    .mini-list div{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);font-size:12px;font-weight:700}
+    .interaction-media{padding:16px;border-radius:38px;background:var(--paper);box-shadow:var(--shadow)}
+    .interaction-media img{border-radius:27px;width:100%}
+
+    .demo-wrap{display:grid;grid-template-columns:1fr .6fr;gap:24px;align-items:stretch}
+    .video-card{padding:18px;background:var(--ink);border-radius:38px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .video-card video{width:100%;height:100%;max-height:760px;object-fit:contain;border-radius:25px;background:#18141d}
+    .demo-note{border-radius:38px;background:var(--purple-soft);padding:42px;display:flex;flex-direction:column;justify-content:space-between;min-height:520px}
+    .demo-note h3{font-size:42px;line-height:1.05}
+    .demo-note p{color:var(--muted);font-size:16px;line-height:1.7}
+    .demo-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .demo-tags span{background:rgba(255,255,255,.64);padding:9px 12px;border-radius:999px;font-size:11px;font-weight:700}
+
+    .closing{padding:90px 0 120px}
+    .closing-card{border-radius:52px;padding:66px;background:linear-gradient(135deg,#f3dfcf 0%,#eee4f7 52%,#e2f0e9 100%);position:relative;overflow:hidden}
+    .closing-card h2{font-size:clamp(48px,6.5vw,86px);line-height:.98;max-width:920px}
+    .closing-card p{font-size:18px;line-height:1.72;color:#5e5663;max-width:800px;margin:24px 0 0}
+    .closing-mark{position:absolute;right:50px;bottom:36px;font-family:"Fraunces",serif;font-size:126px;color:rgba(36,31,45,.08)}
+
+    footer{padding:0 0 42px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:30px}
+
+    @media(max-width:980px){
+      .hero-copy,.engine-top,.demo-wrap,.interaction-layout{grid-template-columns:1fr}
+      .signals{grid-template-columns:repeat(2,1fr)}
+      .flow{grid-template-columns:repeat(2,1fr)}
+      .flow-step:nth-child(2),.flow-step:nth-child(3){transform:none}
+      .meta-strip{grid-template-columns:1fr 1fr}
+      .section-head{grid-template-columns:100px 1fr}
+      .interaction-copy{position:relative;top:auto}
+    }
+    @media(max-width:680px){
+      .shell{width:min(100% - 22px,1320px)}
+      .nav{width:calc(100% - 22px);top:8px}.nav-links a:not(.back-pill){display:none}
+      .hero{padding-top:48px}.hero-copy{gap:24px}.hero-side p{font-size:16px}
+      .hero-stage{padding:9px;border-radius:30px}.hero-stage img{border-radius:24px}.floating-note{display:none}
+      .meta-strip,.problem-grid,.flow,.signals{grid-template-columns:1fr}
+      section{padding:64px 0}.section-head{grid-template-columns:1fr;gap:8px}.section-no{font-size:54px}.section-head h2{font-size:44px}
+      .engine{padding:34px 24px;border-radius:34px}.engine h3{font-size:38px}
+      .branch{grid-template-columns:1fr}.or{margin:auto}
+      .board-caption{flex-direction:column}.board-caption span{text-align:left}
+      .demo-note{min-height:auto;padding:30px}
+      .closing-card{padding:42px 28px;border-radius:36px}.closing-mark{display:none}
+      footer{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="cube-mark"></span><span>Shirin Ahmadi</span></a>
+    <div class="nav-links">
+      <a href="#idea">Idea</a><a href="#system">System</a><a href="#flow">Flow</a><a href="#demo">Prototype</a>
+      <a class="back-pill" href="index.html">Back to portfolio</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero shell">
+      <div class="hero-copy">
+        <div>
+          <div class="eyebrow">AI café experience · Case study</div>
+          <h1>A menu that <em>adapts to you.</em></h1>
+        </div>
+        <div class="hero-side">
+          <p>Cube Café turns a static menu into a more personal ordering experience — using taste, dietary preferences, allergies, mood and the context of the moment, while keeping the full menu one tap away.</p>
+          <div class="chips"><span class="chip">Taste</span><span class="chip">Diet</span><span class="chip">Allergies</span><span class="chip">Mood</span><span class="chip">Today’s context</span></div>
+        </div>
+      </div>
+
+      <div class="hero-stage">
+        <img src="assets/images/cafecubehero.png" alt="Original Cube Café hero design" />
+        <div class="floating-note note-a">The original product design — unchanged</div>
+        <div class="floating-note note-b">AI-assisted menu discovery</div>
+      </div>
+
+      <div class="meta-strip">
+        <div class="meta"><span>Role</span><strong>Product Designer · AI Interaction Designer</strong></div>
+        <div class="meta"><span>Focus</span><strong>Personalization · Ordering UX</strong></div>
+        <div class="meta"><span>Tools</span><strong>Figma · AI tools</strong></div>
+        <div class="meta"><span>Format</span><strong>Mobile café experience</strong></div>
+      </div>
+    </header>
+
+    <section id="idea" class="shell">
+      <div class="section-head">
+        <div class="section-no">01</div>
+        <div><h2>The problem was not emotion. It was relevance.</h2><p class="section-intro">People rarely choose from a café menu using one signal alone. What sounds right can change with taste, dietary restrictions, allergies, energy, mood, time of day and what they simply feel like having in that moment.</p></div>
+      </div>
+      <div class="problem-grid">
+        <article class="problem-card"><span class="kicker">01 · Decision fatigue</span><h3>Too much menu, too little guidance.</h3><p>Long category lists make people scan, compare and second-guess instead of quickly finding a good fit.</p><i class="orb"></i></article>
+        <article class="problem-card"><span class="kicker">02 · Personalization</span><h3>One signal is never enough.</h3><p>Mood can influence a choice, but it should sit beside taste, dietary needs, allergies and the context of the day — not replace them.</p><i class="orb"></i></article>
+        <article class="problem-card"><span class="kicker">03 · Trust</span><h3>Recommendations need a reason.</h3><p>A useful AI assistant should explain why something fits and let the person adjust or ignore the suggestion instantly.</p><i class="orb"></i></article>
+        <article class="problem-card"><span class="kicker">04 · Control</span><h3>The menu must still be the menu.</h3><p>Cube adds an optional intelligent layer. Users who already know what they want can browse and order directly without talking to the assistant.</p><i class="orb"></i></article>
+      </div>
+    </section>
+
+    <section id="system" class="shell">
+      <div class="section-head">
+        <div class="section-no">02</div>
+        <div><h2>A context-aware recommendation layer.</h2><p class="section-intro">Instead of defining the experience as “emotion-based ordering,” Cube combines several lightweight signals to narrow the menu and surface options that make sense now.</p></div>
+      </div>
+      <div class="engine">
+        <div class="engine-top">
+          <h3>Five signals.<br>One useful suggestion.</h3>
+          <p>The assistant can start from what the user already knows — “something cold,” “no dairy,” “not too sweet” — and combine it with preferences or mood when relevant. The goal is not to diagnose emotion. The goal is to make choosing easier and more personal.</p>
+        </div>
+        <div class="signals">
+          <div class="signal"><i></i><strong>Taste</strong><span>Sweet, bitter, fruity, creamy, light, rich…</span></div>
+          <div class="signal"><i></i><strong>Diet</strong><span>Vegan, dairy-free, low sugar and other preferences.</span></div>
+          <div class="signal"><i></i><strong>Allergies</strong><span>Exclude ingredients and suggest safer alternatives.</span></div>
+          <div class="signal"><i></i><strong>Mood</strong><span>Comfort, curiosity, focus or simply “I want a treat.”</span></div>
+          <div class="signal"><i></i><strong>Right now</strong><span>Time, energy, temperature and immediate intent.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="shell">
+      <div class="section-head">
+        <div class="section-no">03</div>
+        <div><h2>Two paths, one effortless order.</h2><p class="section-intro">The AI is optional by design. Cube supports both fast, task-focused ordering and exploratory recommendation without forcing either behaviour.</p></div>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><div class="n">01</div><h3>Scan the table QR</h3><p>Enter the café experience instantly without creating unnecessary friction.</p></div>
+        <div class="flow-step"><div class="n">02</div><h3>Choose a path</h3><p>Open the menu directly or ask Cube to help find something that fits.</p></div>
+        <div class="flow-step"><div class="n">03</div><h3>Refine the match</h3><p>Preferences, restrictions and current context shape the shortlist.</p></div>
+        <div class="flow-step"><div class="n">04</div><h3>Customize & order</h3><p>Adjust ingredients, review the choice and continue to the same cart.</p></div>
+      </div>
+      <div class="branch">
+        <div class="branch-card"><span>Path A · direct</span><h3>I already know what I want.</h3><p>Browse the complete menu, customize an item and order normally.</p></div>
+        <div class="or">OR</div>
+        <div class="branch-card"><span>Path B · assisted</span><h3>Help me find the right thing.</h3><p>Talk to Cube, get a small set of contextual recommendations, then order from the same menu.</p></div>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="section-head">
+        <div class="section-no">04</div>
+        <div><h2>The visual language stays playful and warm.</h2><p class="section-intro">The design system is presented as part of the product story rather than replaced by a new portfolio aesthetic.</p></div>
+      </div>
+      <div class="visual-board">
+        <img src="assets/images/Cube-design-system.png" alt="Original Cube Café design system" />
+        <div class="board-caption"><strong>Cube Café design system</strong><span>Original palette, typography and product styling from the Figma work — preserved exactly as designed.</span></div>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="section-head">
+        <div class="section-no">05</div>
+        <div><h2>Interaction is the centre of the experience.</h2><p class="section-intro">The portfolio gives the real interaction work more space, instead of surrounding it with too many generic cards and decorative UI.</p></div>
+      </div>
+      <div class="interaction-layout">
+        <div class="interaction-copy">
+          <h3>From menu browsing to a small conversation.</h3>
+          <p>Cube should feel less like a chatbot bolted onto a café and more like a knowledgeable server: available when useful, invisible when it is not.</p>
+          <div class="mini-list"><div>Optional AI assistance</div><div>Explainable suggestions</div><div>Diet & allergy awareness</div><div>Direct route to the full menu</div></div>
+        </div>
+        <div class="interaction-media"><img src="assets/images/cube-interactions.png" alt="Original Cube Café interaction design screens" /></div>
+      </div>
+    </section>
+
+    <section id="demo" class="shell">
+      <div class="section-head">
+        <div class="section-no">06</div>
+        <div><h2>The product, not a portfolio mockup.</h2><p class="section-intro">The real prototype video remains the final proof of the interaction. No recreated screens, no substitute visuals.</p></div>
+      </div>
+      <div class="demo-wrap">
+        <div class="video-card"><video controls playsinline preload="metadata"><source src="assets/videos/finalcubecafe.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div>
+        <aside class="demo-note">
+          <div><div class="eyebrow">Live prototype</div><h3>See the ordering flow in motion.</h3><p>The demo connects the interface decisions into a single journey — browsing, recommendation and ordering — using the actual prototype captured from the project.</p></div>
+          <div class="demo-tags"><span>QR entry</span><span>Menu</span><span>Cube assistant</span><span>Recommendation</span><span>Order flow</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <div class="closing-card">
+        <h2>Cube does not replace the menu. It makes the menu feel more relevant.</h2>
+        <p>The core design idea is a café experience that can adapt to the person in front of it — their taste, needs and current context — while preserving choice, speed and control.</p>
+        <div class="closing-mark">CUBE</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell"><span>Cube Café · Product & AI Interaction Case Study</span><span>Designed by Shirin Ahmadi</span></footer>
+</body>
+</html>
